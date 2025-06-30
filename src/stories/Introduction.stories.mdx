@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# 🚴 Wheelbuilder Storybook
+
+Welcome to the Wheelbuilder component library! This Storybook contains interactive documentation for all components in the Wheelbuilder application.
+
+## What is Wheelbuilder?
+
+Wheelbuilder is a professional bicycle wheel spoke length calculator built with Svelte, TypeScript, and Vite. It provides accurate spoke length calculations using the standard bicycle wheel building formula.
+
+## Key Features
+
+- **Accurate Calculations**: Uses the standard bicycle wheel spoke length formula
+- **Input Validation**: Comprehensive validation with helpful error messages  
+- **Responsive Design**: Works perfectly on desktop and mobile devices
+- **Common Wheel Sizes**: Quick selection buttons for popular wheel sizes
+- **Real-time Updates**: Calculations update automatically as you change inputs
+- **Professional UI**: Clean, technical design suitable for bike mechanics
+
+## Components
+
+### WheelBuilder
+The main calculator component that handles all wheel specifications and spoke length calculations.
+
+### Counter
+A simple example component demonstrating basic Svelte reactivity.
+
+## Formula
+
+The spoke length is calculated using the standard bicycle wheel formula:
+
+```
+L = √[(r - h×cos(θ))² + (h×sin(θ))²]
+```
+
+Where:
+- `L` = spoke length (mm)
+- `r` = rim radius (effective diameter ÷ 2)  
+- `h` = hub flange radius (flange diameter ÷ 2)
+- `θ` = cross angle in radians = (cross pattern × 360°) ÷ spoke count
+
+## Getting Started
+
+Browse the components in the sidebar to see interactive examples and documentation. Each component includes:
+
+- Live interactive examples
+- Property controls
+- Source code
+- Documentation
+
+## Development
+
+To run Storybook locally:
+
+```bash
+pnpm run storybook
+```
+
+To build Storybook for production:
+
+```bash
+pnpm run build-storybook
+```

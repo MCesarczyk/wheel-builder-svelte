@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  wheelbuilder:
+    build: .
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wheelbuilder.rule=Host(`wheelbuilder.local`)"
+      - "traefik.http.services.wheelbuilder.loadbalancer.server.port=80"
+
+  # Development service (optional)
+  wheelbuilder-dev:
+    build:
+      context: .
+      target: builder
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: pnpm run dev --host
+    environment:
+      - NODE_ENV=development
+    profiles:
+      - dev
